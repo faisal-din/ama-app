@@ -29,7 +29,7 @@ const Page = () => {
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const debouncedUsername = useDebounceCallback(setUsername, 500);
+  const debounced = useDebounceCallback(setUsername, 500);
   const router = useRouter();
 
   // zod implementation
@@ -127,7 +127,7 @@ const Page = () => {
                     {...field}
                     onChange={(e) => {
                       field.onChange(e);
-                      setUsername(e.target.value);
+                      debounced(e.target.value);
                     }}
                   />
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
