@@ -77,7 +77,7 @@ const Page = () => {
     try {
       const response = await axios.post<ApiResponse>("/api/sign-up", data);
 
-      toast.success("Success", {
+      toast.success("Sign Up Successful", {
         description: response.data.message,
       });
 
