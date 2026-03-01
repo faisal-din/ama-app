@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     if (existingUserByEmail) {
       if (existingUserByEmail.isVerified) {
         return Response.json(
-          { success: false, message: "Email is already registered" },
+          { success: false, message: "User already exists with this email" },
           { status: 400 }
         );
       } else {
@@ -84,7 +84,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         success: true,
-        message: "User registered successfully. Please verify your email.",
+        message: "User registered successfully. Please verify your account.",
       },
       { status: 201 }
     );

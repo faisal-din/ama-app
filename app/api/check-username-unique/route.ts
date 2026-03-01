@@ -29,11 +29,10 @@ export async function GET(request: Request) {
       return Response.json(
         {
           success: false,
-          message: "Invalid username",
-          errors:
+          message:
             usernameErrors?.length > 0
-              ? usernameErrors?.join(", ")
-              : ["Invalid username format"],
+              ? usernameErrors.join(", ")
+              : "Invalid query parameters",
         },
         { status: 400 }
       );
@@ -64,11 +63,11 @@ export async function GET(request: Request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error checking username uniqueness:", error);
+    console.error("Error checking username: ", error);
     return Response.json(
       {
         success: false,
-        message: "Error checking username uniqueness",
+        message: "Error checking username ",
       },
       { status: 500 }
     );
