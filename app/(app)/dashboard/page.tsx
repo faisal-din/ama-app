@@ -163,6 +163,7 @@ const Dashboard = () => {
           checked={acceptMessages}
           onCheckedChange={handleSwitchChange}
           disabled={isSwitchLoading}
+          className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-300 cursor-pointer"
         />
         <span className="ml-2">
           Accept Messages: {acceptMessages ? "On" : "Off"}
@@ -194,7 +195,7 @@ const Dashboard = () => {
             />
           ))
         ) : (
-          <p>No messages to display.</p>
+          <p className="text-center text-gray-500">No messages to display.</p>
         )}
       </div>
     </div>
