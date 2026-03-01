@@ -171,7 +171,7 @@ const Dashboard = () => {
       <Separator />
 
       <Button
-        className="mt-4"
+        className="mt-4 cursor-pointer"
         variant="outline"
         onClick={(e) => {
           e.preventDefault();
