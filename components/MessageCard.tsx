@@ -3,7 +3,6 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -24,6 +23,7 @@ import { Message } from "@/model/user.model";
 import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/apiResponse";
 import { toast } from "sonner";
+import dayjs from "dayjs";
 
 type MessageCardProps = {
   message: Message;
@@ -56,7 +56,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
     <Card className="card-bordered">
       <CardHeader>
         <div className="flex justify-between items-center">
-          <CardTitle>Card Title</CardTitle>
+          <CardTitle>{message.content}</CardTitle>
 
           {/* alert dialog trigger */}
 
@@ -71,7 +71,7 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>
                   This action cannot be undone. This will permanently delete
-                  your account from our servers.
+                  this message.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -84,13 +84,12 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
           </AlertDialog>
 
           {/*  */}
-          <CardDescription>Card Description</CardDescription>
-          <CardAction>Card Action</CardAction>
+        </div>
+        <div className="text-sm">
+          {dayjs(message.createdAt).format("MMM D, YYYY h:mm A")}
         </div>
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
-      </CardContent>
+      <CardContent></CardContent>
     </Card>
   );
 }
